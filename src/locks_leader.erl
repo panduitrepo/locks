@@ -909,7 +909,7 @@ become_leader_(#st{election_ref = {L,_}, mod = M, mod_state = MSt,
             end
     end;
 become_leader_(#st{mod = M, mod_state = MSt} = S0) ->
-    S = S0#st{election_ref = {self(),erlang:monotonic_time(micro_second)}},
+    S = S0#st{election_ref = {self(),erlang:monotonic_time(micro_seconds)}},
     ?event(become_leader, S),
     case M:elected(MSt, opaque(S), undefined) of
 	{ok, Msg, MSt1} ->
